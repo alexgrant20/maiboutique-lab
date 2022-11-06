@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCartRequest extends FormRequest
+class ChangePasswordRequest extends FormRequest
 {
    public function authorize()
    {
@@ -14,7 +14,8 @@ class UpdateCartRequest extends FormRequest
    public function rules()
    {
       return [
-         'quantity' => 'required|gt:0'
+         'old_password' => 'required|between:5,20',
+         'new_password' => 'required|between:5,20'
       ];
    }
 }

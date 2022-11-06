@@ -12,6 +12,7 @@ class CreateCartDetails extends Migration
             $table->id();
             $table->foreignId('cart_id')->constrained()->onUpdate('cascade');
             $table->foreignId('product_id')->constrained()->onUpdate('cascade');
+            $table->integer('quantity')->nullable();
             $table->timestamps();
         });
     }
