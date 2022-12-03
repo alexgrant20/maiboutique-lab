@@ -12,7 +12,6 @@ class CreateProductSizes extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained()->onUpdate('cascade');
             $table->foreignId('size_id')->constrained()->onUpdate('cascade');
-            $table->string('name');
             $table->timestamps();
         });
     }
