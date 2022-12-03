@@ -11,9 +11,9 @@ class Product extends Model
 
    public $guarded = ['id'];
 
-   public function scopeFilterName($query, array $filter)
+   public function scopeFilterName($query, $filter)
    {
-      $query->when($filter['name'] ?? false, function ($query, $name) {
+      $query->when(@$filter, function ($query, $name) {
          $query->where('name', 'LIKE', '%' . $name . '%');
       });
    }

@@ -9,9 +9,9 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use PhpParser\Node\Stmt\Catch_;
 
 class AuthController extends Controller
 {
@@ -56,8 +56,17 @@ class AuthController extends Controller
       return redirect()->route('auth.signin');
    }
 
-   public function signin()
+   public function signin(Request $request)
    {
+      if(request()->cookie('auth')){
+        $auth = json_decode($request->cookie('auth'));
+
+        if (Auth::attempt(['email' => $auth->email, 'password' => $auth->password])) {
+          $request->session()->regenerate();
+
+          return redirect()->intended(route('index'));
+        }
+      }
       return view('auth.login');
    }
 
@@ -68,10 +77,16 @@ class AuthController extends Controller
          'password' => 'required|min:5|max:20',
       ]);
 
-      if (Auth::attempt($credentials)) {
-         $request->session()->regenerate();
 
-         return redirect()->intended(route('index'));
+      if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+
+        if($request->remember_me) {
+          $minutes = 60 * 12 * 7; // 7 days
+          Cookie::queue('auth', json_encode(['email' => $request->email, 'password' => $request->password]), $minutes);
+        }
+
+        return redirect()->intended(route('index'));
       }
 
       return back()->withErrors([
@@ -84,6 +99,8 @@ class AuthController extends Controller
       $request->session()->invalidate();
 
       $request->session()->regenerateToken();
+
+      Cookie::queue(Cookie::forget('auth'));
 
       Auth::logout();
 
