@@ -16,16 +16,17 @@ class ProductController extends Controller
 
    public function index()
    {
-      $products = Product::filterName(request('name'))->paginate(8)->withQueryString();
+      $products = Product::paginate(8);
 
       return view('app.product.index', [
          'products' => $products
       ]);
    }
 
-   public function show(Product $product)
+   public function show($id)
    {
-      return view('app.product.show', compact('product'));
+        $product = Product::find($id);
+        return view('app.product.show', compact('product'));
    }
 
    public function destroy(Product $product)

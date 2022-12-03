@@ -4,8 +4,19 @@
 @include('layouts.head')
 
 <body>
-   @include('layouts.header')
-   <main class="container vw-100 vh-100 d-flex align-items-center justify-content-center">
+
+    @if (Auth::check())
+        @if(Auth::user()->role_id == 1)
+            @include('navbar.headermember')
+        @else
+            @include('navbar.headeradmin')
+        @endif
+    @else
+        @include('navbar.headerguest')
+
+    @endif
+
+   <main class="container vw-100 d-flex align-items-center justify-content-center">
       @yield('content')
    </main>
    @include('layouts.footer')

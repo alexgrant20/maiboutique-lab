@@ -14,7 +14,7 @@ class UserController extends Controller
    {
       $user = auth()->user();
 
-      $profile = User::find($user->id)->with('role')->get();
+      $profile = User::find($user->id);
 
       return view('app.user.show', compact('profile'));
    }

@@ -1,5 +1,5 @@
 @extends('layouts.auth')
-@section('title', 'Login')
+@section('title', 'Sign Up')
 
 @section('content')
    <div class="row w-100">
@@ -17,7 +17,7 @@
                   <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
                </div>
                <div class="mb-3">
-                  <label for="passowrd" class="form-label">Passowrd</label>
+                  <label for="passowrd" class="form-label">Password</label>
                   <input type="password" class="form-control" id="passowrd" name="password" value="{{ old('password') }}">
                </div>
                <div class="mb-3">

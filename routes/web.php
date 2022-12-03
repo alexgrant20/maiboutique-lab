@@ -35,7 +35,9 @@ Route::resource('product', ProductController::class)->only(['create', 'store', '
 
 //Member And Admin
 Route::middleware('auth')->group(function () {
-   Route::get('/', [ProductController::class, 'index'])->name('index');
+   Route::get('/product', [ProductController::class, 'index'])->name('index');
+
+   Route::get('/product-detail/{id}', [ProductController::class, 'show'])->name('detail');
 
    Route::get('/logout', [AuthController::class, 'logout']);
 
@@ -47,7 +49,7 @@ Route::middleware('auth')->group(function () {
 });
 
 //Member, Admin, Guest
-Route::get('/welcome', [IndexController::class, 'welcome'])->name('welcome');
+Route::get('/', [IndexController::class, 'welcome'])->name('welcome');
 
 // Guest
 Route::middleware('guest')->name('auth.')->group(function () {
