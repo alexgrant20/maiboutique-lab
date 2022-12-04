@@ -43,7 +43,11 @@
                     <h4 class="card-text">Product Detail:</h4>
                     <p class="card-text">{{$product->description}} </p>
                     <a href="{{route('index')}}" class="btn btn-danger mt-1">Go Back</a>
-                    <a href="{{route('index')}}" class="btn btn-danger mt-1">Delete Item</a>
+                    <form action={{route('product.destroy', ['product'=>$product])}} method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger mt-1">Delete Item</button>
+                    </form>
                 </div>
             </div>
             </div>

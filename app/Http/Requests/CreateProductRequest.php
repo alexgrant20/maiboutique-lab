@@ -15,7 +15,7 @@ class CreateProductRequest extends FormRequest
    {
       return [
          'image' => 'required|image|mimes:png,jpg,jpeg',
-         'name' => 'required|unique:product,name|between:5,20',
+         'name' => 'required|unique:products,name|between:5,20',
          'description' => 'required|min:5',
          'price' => 'required|integer|gte:1000',
          'stock' => 'required|integer|gte:1',
