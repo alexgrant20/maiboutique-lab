@@ -32,6 +32,10 @@ Route::get('/product/search', [ProductController::class, 'indexSearch'])->name('
 
 Route::resource('product', ProductController::class)->only(['create', 'store', 'show', 'destroy']);
 
+Route::get('/profile-edit/{user}', [UserController::class, 'edit'])->name('profile.edit');
+
+Route::put('/profile-edit/{user}', [UserController::class, 'update'])->name('profile.update');
+
 //Member And Admin
 Route::middleware('auth')->group(function () {
    Route::get('/product', [ProductController::class, 'index'])->name('index');
@@ -41,10 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
 
     Route::get('/profile', [UserController::class, 'show'])->name('profile');
-
-    Route::get('/profile-edit/{user}', [UserController::class, 'edit'])->name('profile.edit');
-
-    Route::put('/profile-edit/{user}', [UserController::class, 'update'])->name('profile.update');
 
     Route::get('/change-password', [UserController::class, 'editPassword'])->name('password.edit');
 

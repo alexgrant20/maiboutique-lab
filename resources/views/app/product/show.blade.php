@@ -5,7 +5,7 @@
 
 @if (Auth::user()->role_id == 1)
 
-    <div class="d-flex justify-content-center align-items-center p-4 m-5">
+    <div class="d-flex justify-content-center align-items-center p-4 m-5" style="height: 68.7vh">
         <div class="card mb-3" style="max-width: 900px;">
             <div class="row g-0">
             <div class="col-md-4">

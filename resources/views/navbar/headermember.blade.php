@@ -10,7 +10,7 @@
             <a class="nav-link {{ Route::is('index') ? 'active' : '' }}" aria-current="page" href="{{ route('index') }}"><h5>Home</h5></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="#"><h5>Search</h5></a>
+            <a class="nav-link {{ Route::is('index.search') ? 'active' : '' }} " href="{{ route('index.search') }}"><h5>Search</h5></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><h5>Cart</h5></a>

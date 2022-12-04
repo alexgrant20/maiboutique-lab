@@ -3,7 +3,7 @@
 
 @include('layouts.head')
 
-<body class="min-vh-100">
+<body>
 
     @if (Auth::check())
         @if(Auth::user()->role_id == 1)

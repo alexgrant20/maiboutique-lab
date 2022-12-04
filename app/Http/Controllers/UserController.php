@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:member', ['only' => ['edit', 'update']]);
+    }
+
    public function show()
    {
       $user = auth()->user();
