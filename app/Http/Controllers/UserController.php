@@ -26,7 +26,9 @@ class UserController extends Controller
 
    public function updatePassword(ChangePasswordRequest $request)
    {
-      if (!Hash::check($request->old_password, $request->new_password))
+      $userPassword = auth()->user()->password;
+
+      if (!Hash::check($request->old_password, $userPassword))
          return back()->withErrors([
             'old_password' => 'Old password dont match!',
          ]);
