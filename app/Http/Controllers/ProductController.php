@@ -53,7 +53,7 @@ class ProductController extends Controller
     {
         $imageName = $request->name . '-' . time();
         $fullPath = "/storage/product/{$imageName}";
-        $request->image->move(public_path($fullPath));
+        $request->image->move(public_path('product'), $imageName);
 
         Product::create([
             'image' => $fullPath,
