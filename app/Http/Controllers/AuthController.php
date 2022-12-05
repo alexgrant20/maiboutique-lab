@@ -12,98 +12,91 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use stdClass;
 
 class AuthController extends Controller
 {
-   public function signup()
-   {
-      return view('auth.register');
-   }
+  public function signup()
+  {
+    return view('auth.register');
+  }
 
-   public function register(RegisterUser $request)
-   {
-      try {
-         $memberRole = Role::where('name', 'member')->firstOrFail(['id']);
-      } catch (Exception $e) {
-         abort(500);
-      }
+  public function register(RegisterUser $request)
+  {
+    try {
+      $memberRole = Role::where('name', 'member')->firstOrFail(['id']);
+    } catch (Exception $e) {
+      abort(500);
+    }
 
-      DB::beginTransaction();
+    DB::beginTransaction();
 
-      try {
-         $user = User::create(
-            [
-               'username' => $request->username,
-               'email' => $request->email,
-               'password' => Hash::make($request->password),
-               'phone_number' => $request->phone_number,
-               'address' => $request->address,
-               'role_id' => $memberRole->id,
-            ]
-         );
+    try {
+      $user = User::create(
+        [
+          'username' => $request->username,
+          'email' => $request->email,
+          'password' => Hash::make($request->password),
+          'phone_number' => $request->phone_number,
+          'address' => $request->address,
+          'role_id' => $memberRole->id,
+        ]
+      );
 
-         Cart::create([
-            'user_id' => $user->id
-         ]);
-      } catch (Exception $e) {
-         DB::rollBack();
-         abort(500);
-      }
-
-      DB::commit();
-
-      // redirect to login
-      return redirect()->route('auth.signin');
-   }
-
-   public function signin(Request $request)
-   {
-      if(request()->cookie('auth')){
-        $auth = json_decode($request->cookie('auth'));
-
-        if (Auth::attempt(['email' => $auth->email, 'password' => $auth->password])) {
-          $request->session()->regenerate();
-
-          return redirect()->intended(route('index'));
-        }
-      }
-      return view('auth.login');
-   }
-
-   public function login(Request $request)
-   {
-      $credentials = $request->validate([
-         'email' => 'required|email',
-         'password' => 'required|min:5|max:20',
+      Cart::create([
+        'user_id' => $user->id
       ]);
+    } catch (Exception $e) {
+      DB::rollBack();
+      abort(500);
+    }
 
+    DB::commit();
 
-      if (Auth::attempt($credentials)) {
-        $request->session()->regenerate();
+    // redirect to login
+    return redirect()->route('auth.signin');
+  }
 
-        if($request->remember_me) {
-          $minutes = 60 * 12 * 7; // 7 days
-          Cookie::queue('auth', json_encode(['email' => $request->email, 'password' => $request->password]), $minutes);
-        }
+  public function signin(Request $request)
+  {
+    $auth = json_decode($request->cookie('auth')) ?? null;
 
-        return redirect()->intended(route('index'));
+    return view('auth.login', [
+      'auth' => $auth
+    ]);
+  }
+
+  public function login(Request $request)
+  {
+    $credentials = $request->validate([
+      'email' => 'required|email',
+      'password' => 'required|min:5|max:20',
+    ]);
+
+    if (Auth::attempt($credentials)) {
+      $request->session()->regenerate();
+
+      if ($request->remember_me) {
+        $minutes = 60 * 12 * 7; // 7 days
+        Cookie::queue('auth', json_encode(['email' => $request->email, 'password' => $request->password]), $minutes);
       }
 
-      return back()->withErrors([
-         'email' => 'The provided credentials do not match our records.',
-      ]);
-   }
+      return redirect()->intended(route('index'));
+    }
 
-   public function logout(Request $request)
-   {
-      $request->session()->invalidate();
+    return back()->withErrors([
+      'email' => 'The provided credentials do not match our records.',
+    ]);
+  }
 
-      $request->session()->regenerateToken();
+  public function logout(Request $request)
+  {
+    $request->session()->invalidate();
 
-      Cookie::queue(Cookie::forget('auth'));
+    $request->session()->regenerateToken();
 
-      Auth::logout();
+    Auth::logout();
 
-      return redirect()->route('auth.login');
-   }
+    return redirect()->route('auth.login');
+  }
 }
