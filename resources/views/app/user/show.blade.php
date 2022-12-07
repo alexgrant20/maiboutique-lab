@@ -13,7 +13,7 @@
       <h4 class="card-title">Email : {{$profile->email}} </h4>
       <h4 class="card-title">Address : {{$profile->address}} </h4>
       <h4 class="card-title">Phone : {{$profile->phone_number}} </h4>
-      @if (Auth::user()->role_id == 1)
+      @if (Auth::user()->role_id == 2)
         <a href=" {{route('profile.edit', $profile->id)}} " class="btn btn-primary">Edit Profile</a>
       @endif
         <a href="{{ route('password.edit') }}" class="btn btn-danger">Edit Password</a>

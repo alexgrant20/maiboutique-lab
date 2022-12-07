@@ -3,7 +3,7 @@
 
 @section('content')
 
-@if (Auth::user()->role_id == 1)
+@if (Auth::user()->role_id == 2)
 
     <div class="d-flex justify-content-center align-items-center p-4 m-5" style="height: 68.7vh">
         <div class="card mb-3" style="max-width: 900px;">
@@ -18,9 +18,11 @@
                     <h4 class="card-text">Product Detail:</h4>
                     <p class="card-text">{{$product->description}} </p>
                     <h4 class="card-text">Quantity:</h4>
-                    <form class="d-flex" role="qty">
-                        <input class="form-control form-control-sm text-center me-1" type="qty" placeholder="1" aria-label="Quantity">
-                        <a href=""><button class="btn btn-success" type="submit">Add To Cart</button></a>
+                    <form action="{{ route('cart.store')}}" method="POST" class="d-flex" role="qty">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{$product->id}}" />
+                        <input class="form-control form-control-sm text-center me-1" type="qty" name="quantity" value="1" aria-label="Quantity">
+                        <button class="btn btn-success" type="submit">Add To Cart</button>
                     </form>
                     <a href="{{route('index')}}" class="btn btn-danger mt-1">Go Back</a>
                 </div>

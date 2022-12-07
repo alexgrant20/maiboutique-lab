@@ -14,7 +14,9 @@ class CartController extends Controller
    {
       $cart = Cart::with('cartDetail')->where('user_id', Auth::id())->firstOrFail();
 
-      return view('', compact('cart'));
+    //   dd($cart);
+
+      return view('app.cart.index', compact('cart'));
    }
 
    public function store(StoreCartRequest $request)
@@ -36,14 +38,16 @@ class CartController extends Controller
 
    public function edit(CartDetail $cartDetail)
    {
-      $cartProduct = $cartDetail->with('product');
+        // dd($cartDetail);
 
-      return redirect()->route('cart.edit', compact('cartProduct'));
+      return view('app.cart.edit', compact('cartDetail'));
    }
 
    public function update(UpdateCartRequest $request, CartDetail $cartDetail)
    {
-      $cartUpdated = $request->safe();
+      $cartUpdated = $request->safe()->toArray();
+
+    //   dd($cartUpdated);
 
       $cartDetail->update($cartUpdated);
 
@@ -52,6 +56,7 @@ class CartController extends Controller
 
    public function destroy(CartDetail $cartDetail)
    {
+        // dd($cartDetail);
       $cartDetail->delete();
 
       return back();

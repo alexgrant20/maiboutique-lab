@@ -13,10 +13,10 @@
             <a class="nav-link {{ Route::is('index.search') ? 'active' : '' }} " href="{{ route('index.search') }}"><h5>Search</h5></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><h5>Cart</h5></a>
+            <a class="nav-link {{ Route::is('cart.index') ? 'active' : '' }}" href="{{ route('cart.index') }}"><h5>Cart</h5></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><h5>History</h5></a>
+            <a class="nav-link {{ Route::is('trx') ? 'active' : '' }}" href="{{ route('trx') }}"><h5>History</h5></a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ Route::is('profile') ? 'active' : '' }}" href="{{ route('profile') }}"><h5>Profile</h5></a>

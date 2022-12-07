@@ -13,6 +13,8 @@ class TransactionHeader extends Model
 
    public function transactionDetail()
    {
-      return $this->belongsTo(TransactionDetail::class);
+      return $this->hasMany(TransactionDetail::class);
    }
+
+
 }

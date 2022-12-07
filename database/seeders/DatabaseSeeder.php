@@ -28,16 +28,6 @@ class DatabaseSeeder extends Seeder
 
         User::insert([
             [
-                'role_id' => 1,
-                'username' => 'admin',
-                'email' => 'admin@gmail.com',
-                'password' => '$2y$10$HN9PkqbEMModR5MRshroX.nXgQXbbIZhISTZz4zrYwcQlb1.3aqW.', //password
-                'phone_number' => '1234567890',
-                'address' => '123457',
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
                 'role_id' => 2,
                 'username' => 'user123',
                 'email' => 'user@gmail.com',
@@ -46,7 +36,18 @@ class DatabaseSeeder extends Seeder
                 'address' => '123457',
                 'created_at' => $now,
                 'updated_at' => $now
+            ],
+            [
+                'role_id' => 1,
+                'username' => 'admin',
+                'email' => 'admin@gmail.com',
+                'password' => '$2y$10$HN9PkqbEMModR5MRshroX.nXgQXbbIZhISTZz4zrYwcQlb1.3aqW.', //password
+                'phone_number' => '1234567890',
+                'address' => '123457',
+                'created_at' => $now,
+                'updated_at' => $now
             ]
+
         ]);
 
         ProductCategory::insert([
@@ -67,7 +68,7 @@ class DatabaseSeeder extends Seeder
                 'product_category_id' => 1,
                 'name' => 'baju pria biru',
                 'price' => 20000,
-                'image' => 'x',
+                'image' => 'https://picsum.photos/seed/avc/200/300',
                 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam laudantium eius magni ea vitae iste eveniet doloribus! Voluptatum, provident nam.',
                 'stock' => 2,
                 'created_at' => $now,
@@ -77,7 +78,7 @@ class DatabaseSeeder extends Seeder
                 'product_category_id' => 1,
                 'name' => 'baju wanita merah',
                 'price' => 35000,
-                'image' => 'x',
+                'image' => 'https://picsum.photos/seed/ccas/200/300',
                 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam laudantium eius magni ea vitae iste eveniet doloribus! Voluptatum, provident nam.',
                 'stock' => 2,
                 'created_at' => $now,
@@ -87,7 +88,7 @@ class DatabaseSeeder extends Seeder
                 'product_category_id' => 2,
                 'name' => 'baju anak biru',
                 'price' => 405000,
-                'image' => 'x',
+                'image' => 'https://picsum.photos/seed/sdfn/200/300',
                 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam laudantium eius magni ea vitae iste eveniet doloribus! Voluptatum, provident nam.',
                 'stock' => 2,
                 'created_at' => $now,
@@ -97,7 +98,7 @@ class DatabaseSeeder extends Seeder
                 'product_category_id' => 2,
                 'name' => 'baju anak merah',
                 'price' => 202000,
-                'image' => 'x',
+                'image' => 'https://picsum.photos/seed/sbyer/200/300',
                 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam laudantium eius magni ea vitae iste eveniet doloribus! Voluptatum, provident nam.',
                 'stock' => 2,
                 'created_at' => $now,

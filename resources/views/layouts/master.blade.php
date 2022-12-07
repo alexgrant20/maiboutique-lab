@@ -6,7 +6,7 @@
 <body>
 
     @if (Auth::check())
-        @if(Auth::user()->role_id == 1)
+        @if(Auth::user()->role_id == 2)
             @include('navbar.headermember')
         @else
             @include('navbar.headeradmin')

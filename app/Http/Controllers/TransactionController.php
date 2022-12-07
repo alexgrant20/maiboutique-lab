@@ -12,6 +12,8 @@ class TransactionController extends Controller
    {
       $transaction = TransactionHeader::with('transactionDetail')->where('user_id', Auth::id())->get();
 
+        // dd($transaction);
+
       return view('app.transaction.index', compact('transaction'));
    }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,11 @@ Route::middleware('role:member')->group(function () {
     Route::prefix('/cart')->name('cart.')->group(function () {
         Route::post('/', [CartController::class, 'store'])->name('store');
         Route::get('/', [CartController::class, 'index'])->name('index');
-        Route::get('{cartDetail}/edit')->name('edit');
-        Route::patch('{cartDetail}')->name('update');
+        Route::get('edit/{cartDetail}', [CartController::class, 'edit'])->name('edit');
+        Route::patch('update/{cartDetail}', [CartController::class, 'update'])->name('update');
+        Route::delete('{cartDetail}', [CartController::class, 'destroy'])->name('delete');
     });
+    Route::get('/transaction', [TransactionController::class, 'index'])->name('trx');
 });
 
 Route::get('/product/search', [ProductController::class, 'indexSearch'])->name('index.search');
