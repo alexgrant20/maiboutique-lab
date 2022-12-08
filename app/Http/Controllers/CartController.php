@@ -10,55 +10,59 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-   public function index()
-   {
-      $cart = Cart::with('cartDetail')->where('user_id', Auth::id())->firstOrFail();
+  public function index()
+  {
+    $cart = Cart::with('cartDetail', 'cartDetail.product')->where('user_id', Auth::id())->firstOrFail();
 
-    //   dd($cart);
+    $totalPrice = 0;
 
-      return view('app.cart.index', compact('cart'));
-   }
+    foreach ($cart->cartDetail as $cartDetail) {
+      $totalPrice += $cartDetail->quantity * $cartDetail->product->price;
+    }
 
-   public function store(StoreCartRequest $request)
-   {
-      $cart = Cart::where(['user_id' => Auth::id()])->firstOrFail();
+    return view('app.cart.index', compact('cart', 'totalPrice'));
+  }
 
-      CartDetail::updateOrCreate(
-         [
-            'cart_id' => $cart->id,
-            'product_id' => $request->product_id,
-         ],
-         [
-            'quantity' => $request->quantity
-         ]
-      );
+  public function store(StoreCartRequest $request)
+  {
+    $cart = Cart::where(['user_id' => Auth::id()])->firstOrFail();
 
-      return redirect()->route('cart.index');
-   }
+    CartDetail::updateOrCreate(
+      [
+        'cart_id' => $cart->id,
+        'product_id' => $request->product_id,
+      ],
+      [
+        'quantity' => $request->quantity
+      ]
+    );
 
-   public function edit(CartDetail $cartDetail)
-   {
-        // dd($cartDetail);
+    return redirect()->route('cart.index');
+  }
 
-      return view('app.cart.edit', compact('cartDetail'));
-   }
+  public function edit(CartDetail $cartDetail)
+  {
+    // dd($cartDetail);
 
-   public function update(UpdateCartRequest $request, CartDetail $cartDetail)
-   {
-      $cartUpdated = $request->safe()->toArray();
+    return view('app.cart.edit', compact('cartDetail'));
+  }
+
+  public function update(UpdateCartRequest $request, CartDetail $cartDetail)
+  {
+    $cartUpdated = $request->safe()->toArray();
 
     //   dd($cartUpdated);
 
-      $cartDetail->update($cartUpdated);
+    $cartDetail->update($cartUpdated);
 
-      return redirect()->route('cart.index');
-   }
+    return redirect()->route('cart.index');
+  }
 
-   public function destroy(CartDetail $cartDetail)
-   {
-        // dd($cartDetail);
-      $cartDetail->delete();
+  public function destroy(CartDetail $cartDetail)
+  {
+    // dd($cartDetail);
+    $cartDetail->delete();
 
-      return back();
-   }
+    return back();
+  }
 }
