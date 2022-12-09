@@ -13,7 +13,7 @@ class TransactionController extends Controller
   public function index()
   {
     $transaction = TransactionHeader::with('transactionDetail')->where('user_id', Auth::id())->get();
-
+    $transaction = $transaction->sortByDesc('created_at');
     // dd($transaction);
 
     return view('app.transaction.index', compact('transaction'));

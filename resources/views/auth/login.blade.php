@@ -15,7 +15,7 @@
                </div>
                <div class="mb-3">
                   <label for="passowrd" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="passowrd" name="password"
+                  <input type="password" class="form-control" id="passowrd" name="password" placeholder="5-20 characters"
                      value="{{ @$auth->password }}">
                </div>
                <div class="mb-3 form-check">
@@ -23,7 +23,7 @@
                   <label class="form-check-label" for="remember_me">Remember Me</label>
                </div>
                <div class="d-grid">
-                  <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                  <button type="submit" class="btn btn-primary mt-2">Sign In</button>
                </div>
             </form>
 

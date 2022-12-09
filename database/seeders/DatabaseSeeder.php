@@ -5,10 +5,7 @@ namespace Database\Seeders;
 use App\Models\Cart;
 use App\Models\CartDetail;
 use App\Models\Product;
-use App\Models\ProductCategory;
-use App\Models\ProductSize;
 use App\Models\Role;
-use App\Models\Size;
 use App\Models\TransactionDetail;
 use App\Models\TransactionHeader;
 use App\Models\User;
@@ -50,22 +47,8 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        ProductCategory::insert([
-            ['name' => 'adult'],
-            ['name' => 'child'],
-        ]);
-
-        Size::insert([
-            ['name' => 'xl'],
-            ['name' => 'l'],
-            ['name' => 'm'],
-            ['name' => 's'],
-            ['name' => 'xs'],
-        ]);
-
         Product::insert([
             [
-                'product_category_id' => 1,
                 'name' => 'baju pria biru',
                 'price' => 20000,
                 'image' => 'https://picsum.photos/seed/avc/200/300',
@@ -75,7 +58,6 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'product_category_id' => 1,
                 'name' => 'baju wanita merah',
                 'price' => 35000,
                 'image' => 'https://picsum.photos/seed/ccas/200/300',
@@ -85,7 +67,6 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'product_category_id' => 2,
                 'name' => 'baju anak biru',
                 'price' => 405000,
                 'image' => 'https://picsum.photos/seed/sdfn/200/300',
@@ -95,7 +76,6 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'product_category_id' => 2,
                 'name' => 'baju anak merah',
                 'price' => 202000,
                 'image' => 'https://picsum.photos/seed/sbyer/200/300',
@@ -104,13 +84,6 @@ class DatabaseSeeder extends Seeder
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
-        ]);
-
-        ProductSize::insert([
-            ['product_id' => 1, 'size_id' => 1],
-            ['product_id' => 2, 'size_id' => 2],
-            ['product_id' => 3, 'size_id' => 3],
-            ['product_id' => 4, 'size_id' => 4],
         ]);
 
         TransactionHeader::insert([

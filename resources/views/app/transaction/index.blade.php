@@ -18,12 +18,12 @@
                                 <li class="ms-1">
                                 <div class="row">
                                     <p class="card-title col-md-5">{{$trxdetail->quantity}} pc(s) {{$trxdetail->product->name}}</p>
-                                    <span class="col-md-7">Rp.{{$trxdetail->price}}</span>
+                                    <span class="col-md-7">Rp {{number_format($trxdetail->price,0,',','.')}}</span>
                                 </div>
                                 </li>
                             @endforeach
                         </ul>
-                        <h5 class="card-text">Total Price {{$trx->total_price}} </h5>
+                        <h5 class="card-text">Total Price {{number_format($trx->total_price,0,',','.')}} </h5>
                         {{-- <a href="{{ route('detail', ['id'=>$product->id]) }}" class="btn btn-primary">More Detail</a> --}}
                         </div>
                     </div>

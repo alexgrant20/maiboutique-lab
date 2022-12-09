@@ -23,7 +23,7 @@
                     <input class="form-control form-control-sm text-center me-1" type="qty" name="quantity" value="{{$cartDetail->quantity}}" aria-label="Quantity">
                     <button class="btn btn-success" type="submit">Update Cart</button>
                 </form>
-                <a href="{{route('index')}}" class="btn btn-danger mt-1">Go Back</a>
+                <a href="{{route('cart.index')}}" class="btn btn-danger mt-1">Go Back</a>
             </div>
         </div>
         </div>

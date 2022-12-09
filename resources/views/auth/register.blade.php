@@ -10,7 +10,7 @@
                @csrf
                <div class="mb-3">
                   <label for="username" class="form-label">Username</label>
-                  <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}">
+                  <input type="text" class="form-control" placeholder="(5-20 letters)" id="username" name="username" value="{{ old('username') }}">
                </div>
                <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
@@ -18,16 +18,16 @@
                </div>
                <div class="mb-3">
                   <label for="passowrd" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="passowrd" name="password" value="{{ old('password') }}">
+                  <input type="password" class="form-control" placeholder="(5-20 letters)" id="passowrd" name="password" value="{{ old('password') }}">
                </div>
                <div class="mb-3">
                   <label for="phone_number" class="form-label">Phone Number</label>
-                  <input type="text" class="form-control" id="phone_number" name="phone_number"
+                  <input type="text" class="form-control" placeholder="(10-13 numbers)" id="phone_number" name="phone_number"
                      value="{{ old('phone_number') }}">
                </div>
                <div class="mb-3">
                   <label for="address" class="form-label">Address</label>
-                  <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
+                  <input type="text" class="form-control" id="address" placeholder="(min 5 letters)" name="address" value="{{ old('address') }}">
                </div>
                <div class="d-grid">
                   <button type="submit" class="btn btn-primary mt-2">Submit</button>

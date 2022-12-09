@@ -14,7 +14,7 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h2 class="card-title">{{$product->name}}</h2>
-                    <h3 class="card-text">Rp. {{$product->price}} </h3>
+                    <h3 class="card-text">Rp {{number_format($product->price,0,',','.')}} </h3>
                     <h4 class="card-text">Product Detail:</h4>
                     <p class="card-text">{{$product->description}} </p>
                     <h4 class="card-text">Quantity:</h4>

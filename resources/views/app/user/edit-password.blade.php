@@ -12,17 +12,11 @@
             @csrf
             <div class="mt-3">
                 <label for="inputPassword5" class="form-label">Old Password</label>
-                <input type="password" name="old_password" class="form-control">
-                <div id="passwordHelp" class="form-text">
-                Your password must be 5-20 characters long.
-                </div>
+                <input type="password" placeholder="(5 - 20 letters)" name="old_password" class="form-control">
             </div>
             <div class="mt-3">
                 <label for="password" class="form-label">New Password</label>
-                <input type="password" name="new_password" class="form-control">
-                <div id="passwordHelp" class="form-text">
-                    Your password must be 5-20 characters long.
-                </div>
+                <input type="password" placeholder="(5 - 20 letters)" name="new_password" class="form-control">
             </div>
 
             <button type="submit" class="btn btn-success mt-2" style="width: 450px">Save Update</button>

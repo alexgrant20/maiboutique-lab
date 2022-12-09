@@ -14,7 +14,7 @@
                         <img src="{{asset($product->image)}}" class="card-img-top" alt="...">
                         <div class="card-body flex-grow-1">
                         <h5 class="card-title">{{$product->name}}</h5>
-                        <h6 class="card-text"> Rp. {{$product->price}} </h6>
+                        <h6 class="card-text"> Rp {{number_format($product->price,0,',','.')}} </h6>
                         <a href="{{ route('detail', ['id'=>$product->id]) }}" class="btn btn-primary">More Detail</a>
                         </div>
                     </div>

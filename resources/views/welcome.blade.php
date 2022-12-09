@@ -11,7 +11,7 @@
         <div class="card-body">
             <h3>Welcome To MaiBoutique</h3>
             <h5>Online Boutique that Provides Everything for You</h5>
-            <a href="/register"><button class="btn btn-primary mt-1" type="button">Sign Up</button></a>
+            <a href="{{ route('auth.register')}}"><button class="btn btn-primary mt-1" type="button">Sign Up Now</button></a>
 
         </div>
     </div>

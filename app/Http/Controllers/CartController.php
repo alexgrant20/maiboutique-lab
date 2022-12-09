@@ -15,12 +15,14 @@ class CartController extends Controller
     $cart = Cart::with('cartDetail', 'cartDetail.product')->where('user_id', Auth::id())->firstOrFail();
 
     $totalPrice = 0;
+    $quantity = 0;
 
     foreach ($cart->cartDetail as $cartDetail) {
       $totalPrice += $cartDetail->quantity * $cartDetail->product->price;
+      $quantity += $cartDetail->quantity;
     }
 
-    return view('app.cart.index', compact('cart', 'totalPrice'));
+    return view('app.cart.index', compact('cart', 'totalPrice', 'quantity'));
   }
 
   public function store(StoreCartRequest $request)
