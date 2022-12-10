@@ -19,7 +19,7 @@
 
         <div class="d-flex flex-wrap justify-content-center mt-3 gap-4" style="margin-top: 500px">
             @foreach ($cart->cartDetail as $crt)
-                    <div class="d-flex flex-column card" style="width: 18rem">
+                    <div class="d-flex flex-column card shadow" style="width: 18rem">
                         <img src="{{asset($crt->product->image)}}" class="card-img-top" alt="...">
                         <div class="card-body flex-grow-1">
                         <h5 class="card-title">{{$crt->product->name}}</h5>

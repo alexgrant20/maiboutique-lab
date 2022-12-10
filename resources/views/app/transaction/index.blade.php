@@ -10,7 +10,7 @@
         <div class="d-flex flex-wrap justify-content-center mt-3 mb-4 gap-4" style="margin-top: 500px">
 
             @foreach ($transaction as $trx)
-                    <div class="d-flex flex-column card" style="width: 40rem">
+                    <div class="d-flex flex-column card shadow bg-secondary text-white" style="width: 40rem">
                         <div class="card-body flex-grow-1">
                         <h5 class="card-title">{{$trx->created_at}}</h5>
                         <ul>

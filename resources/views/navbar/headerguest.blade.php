@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg bg-light navbar-dark bg-black fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand m-1" href="/"><H3>MAIBOUTIQUE</H3></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

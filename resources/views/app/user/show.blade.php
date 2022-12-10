@@ -5,7 +5,7 @@
 
    {{-- {{dd($profile)}} --}}
    <div class="m-5 p-5" style="height: 68.7vh">
-      <div class="card text-center" style="width: 50rem;">
+      <div class="card text-center shadow-lg bg-black text-white" style="width: 50rem;">
          <div class="card-body">
             <h1 class="card-title">My Profile</h1>
             <h4><span class="badge text-bg-warning">{{ $profile->role->name }}</span></h4>

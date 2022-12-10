@@ -15,7 +15,7 @@
     <div class="d-flex flex-wrap justify-content-center mt-5 gap-4" style="margin-top: 500px">
 
         @foreach ($products as $product)
-                <div class="d-flex flex-column card" style="width: 18rem">
+                <div class="d-flex flex-column card shadow" style="width: 18rem">
                     <img src="{{asset($product->image)}}" class="card-img-top" alt="...">
                     <div class="card-body flex-grow-1">
                     <h5 class="card-title">{{$product->name}}</h5>

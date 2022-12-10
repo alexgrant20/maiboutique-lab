@@ -6,9 +6,9 @@
 @if (Auth::user()->role_id == 2)
 
     <div class="d-flex justify-content-center align-items-center p-4 m-5" style="height: 68.7vh">
-        <div class="card mb-3" style="max-width: 900px;">
+        <div class="card shadow mb-3" style="max-width: 900px;">
             <div class="row g-0">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <img src="{{$product->image}}" class="img-fluid rounded-start" alt="...">
             </div>
             <div class="col-md-8">
@@ -33,7 +33,7 @@
 @else
     {{-- admin --}}
     <div class="d-flex justify-content-center align-items-center p-4 m-5">
-        <div class="card mb-3" style="max-width: 900px;">
+        <div class="card shadow mb-3" style="max-width: 900px;">
             <div class="row g-0">
             <div class="col-md-4">
                 <img src="{{$product->image}}" class="img-fluid rounded-start" alt="...">

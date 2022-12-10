@@ -5,7 +5,7 @@
 
 <div class="row w-100 p-4">
     <div class="col-12 col-xl-6 m-auto">
-       <div class="shadow-sm border rounded p-5">
+       <div class="shadow border rounded p-5">
           <h1 class="fw-bold mb-4 text-center">Add Item</h1>
           <form action="{{ route('product.store') }}" method="POST" class="mb-3" enctype="multipart/form-data">
              @csrf
