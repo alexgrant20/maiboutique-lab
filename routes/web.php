@@ -36,9 +36,9 @@ Route::get('/product/search', [ProductController::class, 'indexSearch'])->name('
 
 Route::resource('product', ProductController::class)->only(['create', 'store', 'show', 'destroy']);
 
-Route::get('/profile-edit/{user}', [UserController::class, 'edit'])->name('profile.edit');
+Route::get('/profile-edit', [UserController::class, 'edit'])->name('profile.edit');
 
-Route::put('/profile-edit/{user}', [UserController::class, 'update'])->name('profile.update');
+Route::put('/profile-edit', [UserController::class, 'update'])->name('profile.update');
 
 //Member And Admin
 Route::middleware('auth')->group(function () {

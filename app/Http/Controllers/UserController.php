@@ -10,52 +10,56 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('role:member', ['only' => ['edit', 'update']]);
-    }
+  public function __construct()
+  {
+    $this->middleware('role:member', ['only' => ['edit', 'update']]);
+  }
 
-   public function show()
-   {
-      $user = auth()->user();
+  public function show()
+  {
+    $user = auth()->user();
 
-      $profile = User::find($user->id);
+    $profile = User::find($user->id);
 
-      return view('app.user.show', compact('profile'));
-   }
+    return view('app.user.show', compact('profile'));
+  }
 
-   public function editPassword()
-   {
-      return view('app.user.edit-password');
-   }
+  public function editPassword()
+  {
+    return view('app.user.edit-password');
+  }
 
-   public function updatePassword(ChangePasswordRequest $request)
-   {
-      $userPassword = auth()->user()->password;
+  public function updatePassword(ChangePasswordRequest $request)
+  {
+    $userPassword = auth()->user()->password;
 
-      if (!Hash::check($request->old_password, $userPassword))
-         return back()->withErrors([
-            'old_password' => 'Old password dont match!',
-         ]);
-
-      User::find(Auth::id())->update([
-         'password' => Hash::make($request->new_password)
+    if (!Hash::check($request->old_password, $userPassword))
+      return back()->withErrors([
+        'old_password' => 'Old password dont match!',
       ]);
 
-      return redirect()->route('profile');
-   }
+    User::find(Auth::id())->update([
+      'password' => Hash::make($request->new_password)
+    ]);
 
-   public function edit(User $user)
-   {
-      return view('app.user.edit', compact('user'));
-   }
+    return redirect()->route('profile');
+  }
 
-   public function update(UpdateUserRequest $request, User $user)
-   {
-      $userUpdateData = $request->safe()->toArray();
+  public function edit()
+  {
+    $user = auth()->user();
 
-      $user->update($userUpdateData);
+    return view('app.user.edit', compact('user'));
+  }
 
-      return redirect()->route('profile');
-   }
+  public function update(UpdateUserRequest $request)
+  {
+    $user = User::find(auth()->user()->id);
+
+    $userUpdateData = $request->safe()->toArray();
+
+    $user->update($userUpdateData);
+
+    return redirect()->route('profile');
+  }
 }

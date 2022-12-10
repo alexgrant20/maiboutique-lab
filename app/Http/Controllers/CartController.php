@@ -44,16 +44,12 @@ class CartController extends Controller
 
   public function edit(CartDetail $cartDetail)
   {
-    // dd($cartDetail);
-
     return view('app.cart.edit', compact('cartDetail'));
   }
 
   public function update(UpdateCartRequest $request, CartDetail $cartDetail)
   {
     $cartUpdated = $request->safe()->toArray();
-
-    //   dd($cartUpdated);
 
     $cartDetail->update($cartUpdated);
 
@@ -62,7 +58,6 @@ class CartController extends Controller
 
   public function destroy(CartDetail $cartDetail)
   {
-    // dd($cartDetail);
     $cartDetail->delete();
 
     return back();

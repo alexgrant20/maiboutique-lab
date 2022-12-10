@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class TransactionDetail extends Model
 {
-   use HasFactory;
+  use HasFactory;
 
-   protected $guarded = ['id'];
+  protected $guarded = ['id'];
 
-    public function product(){
-        return $this->belongsTo(Product::class);
-    }
-
+  public function product()
+  {
+    return $this->belongsTo(Product::class)->withTrashed();
+  }
 }
