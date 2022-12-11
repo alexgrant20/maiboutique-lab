@@ -32,7 +32,7 @@
         </div>
 @else
     {{-- admin --}}
-    <div class="d-flex justify-content-center align-items-center p-4 m-5">
+    <div class="d-flex justify-content-center align-items-center p-4 m-5" style="height: 71.8vh">
         <div class="card shadow mb-3" style="max-width: 900px;">
             <div class="row g-0">
             <div class="col-md-4">
