@@ -54,7 +54,8 @@ class ProductController extends Controller
 
   public function store(CreateProductRequest $request)
   {
-    $imageName = $request->name . '-' . time();
+
+    $imageName = $request->name . '-' . time() . '-' . $request->file('image')->getClientOriginalName();
     $fullPath = "/storage/product/{$imageName}";
     $request->image->move(public_path('/storage/product'), $imageName);
 
