@@ -124,17 +124,17 @@ class DatabaseSeeder extends Seeder
 
     TransactionHeader::insert([
       [
-        'user_id' => 2,
+        'user_id' => 1,
         'total_item' => 3,
         'total_price' => 10000,
       ],
       [
-        'user_id' => 2,
+        'user_id' => 1,
         'total_item' => 5,
-        'total_price' => 20000,
+        'total_price' => 25000,
       ],
       [
-        'user_id' => 2,
+        'user_id' => 1,
         'total_item' => 5,
         'total_price' => 15000,
       ],
@@ -172,10 +172,16 @@ class DatabaseSeeder extends Seeder
         'price' => 2500
       ],
       [
-        'transaction_header_id' => 1,
+        'transaction_header_id' => 3,
         'product_id' => 2,
         'quantity' => 1,
         'price' => 10000
+      ],
+      [
+        'transaction_header_id' => 3,
+        'product_id' => 1,
+        'quantity' => 1,
+        'price' => 5000
       ],
     ]);
 

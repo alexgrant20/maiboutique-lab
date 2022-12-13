@@ -8,7 +8,8 @@
          <div class="card shadow mb-3" style="max-width: 900px;">
             <div class="row g-0">
                <div class="col-md-3">
-                  <img src="{{ $product->image }}" class="img-fluid rounded-start" alt="...">
+                  <img src="{{ $product->image }}" class="w-100 h-100 rounded-start" style="background-size: 100% 100%"
+                     alt="...">
                </div>
                <div class="col-md-8">
                   <div class="card-body">
