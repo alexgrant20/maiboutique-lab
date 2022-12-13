@@ -5,7 +5,7 @@
 
    <div class="d-flex flex-column align-items-center">
       <div class="my-5">
-         <h1 class="display-5 fw-bold">Find Your Best Clothes Here!</h1>
+         <h1 class="display-5">Find Your Best Clothes Here!</h1>
       </div>
 
       <div class="row g-4 w-100">

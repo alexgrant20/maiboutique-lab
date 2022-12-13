@@ -4,7 +4,7 @@
 @section('content')
    <div class="d-flex flex-column align-items-center">
       <div class="mt-5">
-         <h1 class="display-5 fw-bold">Search Your Favorite Clothes!</h1>
+         <h1 class="display-5">Search Your Favorite Clothes!</h1>
       </div>
 
       <form action="{{ route('index.search') }}" class="d-flex mt-3 mb-5" style="width: 700px" role="search">
