@@ -13,11 +13,14 @@
          <button class="btn btn-primary" type="submit">Search</button>
       </form>
 
-      <div class="row g-4 w-100">
-         @foreach ($products as $product)
-            <x-product-container :product="$product" />
-         @endforeach
+      <div class="container">
+         <div class="row g-4">
+            @foreach ($products as $product)
+               <x-product-container :product="$product" />
+            @endforeach
+         </div>
       </div>
+
       <div class="p-1" style="margin: 2rem">
          {{ $products->links() }}
       </div>

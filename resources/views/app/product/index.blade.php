@@ -8,13 +8,15 @@
          <h1 class="display-5">Find Your Best Clothes Here!</h1>
       </div>
 
-      <div class="row g-4 w-100">
-         @foreach ($products as $product)
-            <x-product-container :product="$product" />
-         @endforeach
-      </div>
-      <div class="p-1" style="margin: 2rem">
-         {{ $products->links() }}
+      <div class="container">
+         <div class="row g-4">
+            @foreach ($products as $product)
+               <x-product-container :product="$product" />
+            @endforeach
+         </div>
+         <div class="p-1" style="margin: 2rem">
+            {{ $products->links() }}
+         </div>
       </div>
    </div>
 @endsection

@@ -16,31 +16,30 @@
          </form>
       </div>
 
-      <div class="row mt-3 g-3" style="margin-top: 500px">
-         @foreach ($cart->cartDetail as $crt)
-            <div class="col-md-3">
-               <div class="card shadow">
-                  <div class="w-100" style="height: 300px">
-                     <img src="{{ asset($crt->product->image) }}" class="w-100 h-100" style="background-size: 100% 100%"
-                        alt="">
-                  </div>
-                  <div class="card-body d-flex flex-column">
-                     <h5 class="card-title">{{ $crt->product->name }}</h5>
-                     <h6 class="card-text"> Rp {{ number_format($crt->product->price, 0, ',', '.') }}</h6>
-                     <h6 class="card-text mb-3"> Qty: {{ $crt->quantity }} </h6>
-                     <a href="{{ route('cart.edit', ['cartDetail' => $crt]) }}" class="btn btn-primary">Edit Cart</a>
-                     <form class="d-grid" action="{{ route('cart.delete', $crt->id) }}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger mt-1">Remove from Cart</button>
-                     </form>
+      <div class="container">
+         <div class="row mt-3 g-3" style="margin-top: 500px">
+            @foreach ($cart->cartDetail as $crt)
+               <div class="col-md-3">
+                  <div class="card shadow">
+                     <div class="w-100" style="height: 300px">
+                        <img src="{{ asset($crt->product->image) }}" class="w-100 h-100" style="background-size: 100% 100%"
+                           alt="">
+                     </div>
+                     <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ $crt->product->name }}</h5>
+                        <h6 class="card-text"> Rp {{ number_format($crt->product->price, 0, ',', '.') }}</h6>
+                        <h6 class="card-text mb-3"> Qty: {{ $crt->quantity }} </h6>
+                        <a href="{{ route('cart.edit', ['cartDetail' => $crt]) }}" class="btn btn-primary">Edit Cart</a>
+                        <form class="d-grid" action="{{ route('cart.delete', $crt->id) }}" method="POST">
+                           @csrf
+                           @method('delete')
+                           <button type="submit" class="btn btn-danger mt-1">Remove from Cart</button>
+                        </form>
+                     </div>
                   </div>
                </div>
-            </div>
-         @endforeach
+            @endforeach
+         </div>
       </div>
-      {{-- <div class="p-1" style="margin: 2rem">
-            {{$products->links()}}
-        </div> --}}
    </div>
 @endsection
